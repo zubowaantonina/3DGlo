@@ -1,5 +1,3 @@
-/* eslint-disable arrow-parens */
-/* eslint-disable prefer-const */
 const timer = (deadline) => {
     const timerHours = document.getElementById("timer-hours");
     const timerMinutes = document.getElementById("timer-minutes");
@@ -12,7 +10,9 @@ const timer = (deadline) => {
         let hours = Math.floor(timeRemaining / 60 / 60);
         let minutes = Math.floor((timeRemaining / 60) % 60);
         let seconds = Math.floor(timeRemaining % 60);
-
+        seconds < 10 ? (seconds = `0${seconds}`) : (seconds = seconds);
+        minutes < 10 ? (minutes = `0${minutes}`) : (minutes = minutes);
+        hours < 10 ? (hours = `0${hours}`) : (hours = hours);
         return { timeRemaining, hours, minutes, seconds };
     };
     const updateClock = () => {
@@ -20,10 +20,14 @@ const timer = (deadline) => {
         timerHours.textContent = getTime.hours;
         timerMinutes.textContent = getTime.minutes;
         timerSeconds.textContent = getTime.seconds;
-        if (getTime.timeRemaining > 0) {
-            setTimeout(updateClock, 1000);
+        if (getTime.timeRemaining <= 0) {
+            timerHours.textContent = "00";
+            timerMinutes.textContent = "00";
+            timerSeconds.textContent = "00";
+            clearInterval(interval);
         }
     };
     updateClock();
+    let interval = setInterval(updateClock, 1000);
 };
 export default timer;
