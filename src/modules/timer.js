@@ -10,9 +10,9 @@ const timer = (deadline) => {
         let hours = Math.floor(timeRemaining / 60 / 60);
         let minutes = Math.floor((timeRemaining / 60) % 60);
         let seconds = Math.floor(timeRemaining % 60);
-        seconds < 10 ? (seconds = `0${seconds}`) : (seconds = seconds);
-        minutes < 10 ? (minutes = `0${minutes}`) : (minutes = minutes);
-        hours < 10 ? (hours = `0${hours}`) : (hours = hours);
+        seconds < 10 ? seconds = `0${seconds}` : seconds = seconds;
+        minutes < 10 ? minutes = `0${minutes}` : minutes = minutes;
+        hours < 10 ? hours = `0${hours}` : hours = hours;
         return { timeRemaining, hours, minutes, seconds };
     };
     const updateClock = () => {
