@@ -34,8 +34,8 @@ const calculator = (price = 100) => {
     } else {
       totalValue = 0;
     }
-    const time = 2000;
-    const step = 1;
+   let time = 2000;
+    let step = 1;
 
     const numberAnimation = (num, elem) => {
       let n = 0;
