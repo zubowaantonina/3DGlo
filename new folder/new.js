@@ -53,7 +53,7 @@ const getData = () => {
         if (hours >= 18 && hours < 23) {
             good = "Добрый вечер!";
         }
-        if (hours >= 5 && hours < 11) {
+        else  {
             good = "Доброй ночи!";
         }
     };
