@@ -36,3 +36,8 @@ const timer = (deadline) => {
       timerSeconds.textContent = "00";
     }
   };
+
+  interval = setInterval(updateClock, 1000);
+  updateClock();
+};
+export default timer;
