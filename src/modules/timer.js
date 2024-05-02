@@ -22,7 +22,7 @@ const timer = (deadline) => {
     hours = zero(hours);
     return { timeRemaining, hours, minutes, seconds };
   };
-  console.log(dateStop);
+ 
   let interval;
   const updateClock = () => {
     let getTime = getTimeRemaining();
