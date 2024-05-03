@@ -3,7 +3,7 @@ const timer = (deadline) => {
   const timerMinutes = document.getElementById("timer-minutes");
   const timerSeconds = document.getElementById("timer-seconds");
 
-  const zero = (elem) => {
+  const  padZero = (elem) => {
     if (elem < 10) {
       return (elem = `0${elem}`);
     } else {
@@ -17,9 +17,9 @@ const timer = (deadline) => {
     let hours = Math.floor(timeRemaining / 60 / 60);
     let minutes = Math.floor((timeRemaining / 60) % 60);
     let seconds = Math.floor(timeRemaining % 60);
-    seconds = zero(seconds);
-    minutes = zero(minutes);
-    hours = zero(hours);
+    seconds =  padZero(seconds);
+    minutes =  padZero(minutes);
+    hours =  padZero(hours);
     return { timeRemaining, hours, minutes, seconds };
   };
  
