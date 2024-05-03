@@ -15,7 +15,6 @@ const modal = () => {
                 },
                 draw() {
                     modal.style.display = 'block';
-
                     if (count < 100) {
                         modal.style.opacity = count + '%';
                         count += 5;
