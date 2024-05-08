@@ -2,8 +2,6 @@ const sendForm = ({ formId, someElem = [] }) => {
   const form = document.getElementById(formId);
   const statusBlock = document.createElement("div");
   const loadText = "Загрузка...";
-
-  // const loadText=preloder()
   const errorText = "Ошибка...";
   const successText = "Спасибо! Наш менеджер свяжется с Вами.";
 
