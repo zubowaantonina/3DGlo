@@ -1,9 +1,32 @@
 const sendForm = ({ formId, someElem = [] }) => {
   const form = document.getElementById(formId);
   const statusBlock = document.createElement("div");
-  const loadText = "Загрузка...";
-  const errorText = "Ошибка...";
-  const successText = "Спасибо! Наш менеджер свяжется с Вами.";
+  // const loadText = "Загрузка...";
+  // const errorText = "Ошибка...";
+  // const successText = "Спасибо! Наш менеджер свяжется с Вами.";
+  const showStatus = status => {
+    const img = document.createElement('img');
+    const statusList = {
+      load: {
+        message: ' Загрузка...',
+        img: './images/message/loading.gif'
+      },
+      error: {
+        message: 'Ошибка...',
+        img: './images/message/Err.png'
+      },
+      success: {
+        message: 'Спасибо! Наш менеджер свяжется с Вами.',
+        img: './images/message/OK.png'
+      }
+    };
+
+    statusBlock.textContent = statusList[status].message;
+    img.src = statusList[status].img;
+    img.height = 50;
+
+    statusBlock.append(img, statusBlock.firstChild);
+  };
 
   const validate = (list) => {
     let success = true;
@@ -14,7 +37,7 @@ const sendForm = ({ formId, someElem = [] }) => {
     const formBody = {};
     const formElements = form.querySelectorAll("input");
 
-    statusBlock.innerHTML = loadText;
+    showStatus('load');
     form.append(statusBlock);
 
     const sendData = (data) => {
@@ -42,14 +65,14 @@ const sendForm = ({ formId, someElem = [] }) => {
     if (validate(formElements)) {
       sendData(formBody)
         .then((data) => {
-          statusBlock.textContent = successText;
+          showStatus('success');
           formElements.forEach((input) => {
             input.value = "";
           });
           // console.log(data);
         })
         .catch((error) => {
-          statusBlock.textContent = errorText;
+          showStatus('error');
         });
     } else {
       alert("Данные не валидны");
