@@ -35,7 +35,7 @@ const slider = () => {
     sliderBlock.addEventListener('click', (e) => {
         e.preventDefault();
         if (!e.target.matches(".dot, .portfolio-btn")) {
-            
+
             return;
         }
         prevSlide(slides, currentSlide, "portfolio-item-active");
@@ -61,17 +61,17 @@ const slider = () => {
         nextSlide(dots, currentSlide, "dot-active");
     });
     sliderBlock.addEventListener('mouseenter', (e) => {
-        if (e.target.matches('.dot, .portfolio-btn')) {
+        if (e.target.matches('.dot,.portfolio-btn')) {
             stopSlide();
         }
     }, true)
 
     sliderBlock.addEventListener('mouseleave', (e) => {
-        if (e.target.matches('.dot, .portfolio-btn')) {
+        if (e.target.matches('.dot,.portfolio-btn')) {
             startSlide();
         }
     }, true)
-    
+
 
 
     startSlide();
