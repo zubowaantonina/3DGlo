@@ -1,24 +1,22 @@
 const sendForm = ({ formId, someElem = [] }) => {
   const form = document.getElementById(formId);
   const statusBlock = document.createElement("div");
-  // const loadText = "Загрузка...";
-  // const errorText = "Ошибка...";
-  // const successText = "Спасибо! Наш менеджер свяжется с Вами.";
-  const showStatus = status => {
-    const img = document.createElement('img');
+
+  const showStatus = (status) => {
+    const img = document.createElement("img");
     const statusList = {
       load: {
-        message: ' Загрузка...',
-        img: './images/message/loading.gif'
+        message: " Загрузка...",
+        img: "./images/message/loading.gif",
       },
       error: {
-        message: 'Ошибка...',
-        img: './images/message/Err.png'
+        message: "Ошибка...",
+        img: "./images/message/Err.png",
       },
       success: {
-        message: 'Спасибо! Наш менеджер свяжется с Вами.',
-        img: './images/message/OK.png'
-      }
+        message: "Спасибо! Наш менеджер свяжется с Вами.",
+        img: "./images/message/OK.png",
+      },
     };
 
     statusBlock.textContent = statusList[status].message;
@@ -37,7 +35,7 @@ const sendForm = ({ formId, someElem = [] }) => {
     const formBody = {};
     const formElements = form.querySelectorAll("input");
 
-    showStatus('load');
+    showStatus("load");
     form.append(statusBlock);
 
     const sendData = (data) => {
@@ -53,42 +51,39 @@ const sendForm = ({ formId, someElem = [] }) => {
     });
     someElem.forEach((elem) => {
       const element = document.getElementById(elem.id);
-      // console.log(element);
+
       if (elem.type === "block") {
         formBody[elem.id] = element.textContent;
       } else if (elem.type === "input") {
         formBody[elem.id] = element.input;
       }
     });
-    // console.log(validate(formElements));
 
     if (validate(formElements)) {
       sendData(formBody)
         .then((data) => {
-          showStatus('success');
+          showStatus("success");
           formElements.forEach((input) => {
             input.value = "";
           });
-          // console.log(data);
         })
         .catch((error) => {
-          showStatus('error');
+          showStatus("error");
         });
     } else {
       alert("Данные не валидны");
     }
   };
-  try{
-    if(!form){
-      throw new Error('Верните форму на место, пожалуйста!')
+  try {
+    if (!form) {
+      throw new Error("Верните форму на место, пожалуйста!");
     }
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      submitForm()
+      submitForm();
     });
-  }catch(error){
+  } catch (error) {
     console.log(error.message);
   }
- 
 };
 export default sendForm;
