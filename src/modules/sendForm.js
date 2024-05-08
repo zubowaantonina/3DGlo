@@ -30,14 +30,13 @@ const sendForm = ({ formId, someElem = [] }) => {
     });
     someElem.forEach((elem) => {
       const element = document.getElementById(elem.id);
-      // console.log(element);
+
       if (elem.type === "block") {
         formBody[elem.id] = element.textContent;
       } else if (elem.type === "input") {
         formBody[elem.id] = element.input;
       }
     });
-    // console.log(validate(formElements));
 
     if (validate(formElements)) {
       sendData(formBody)
@@ -46,7 +45,6 @@ const sendForm = ({ formId, someElem = [] }) => {
           formElements.forEach((input) => {
             input.value = "";
           });
-          // console.log(data);
         })
         .catch((error) => {
           statusBlock.textContent = errorText;
@@ -55,17 +53,16 @@ const sendForm = ({ formId, someElem = [] }) => {
       alert("Данные не валидны");
     }
   };
-  try{
-    if(!form){
-      throw new Error('Верните форму на место, пожалуйста!')
+  try {
+    if (!form) {
+      throw new Error("Верните форму на место, пожалуйста!");
     }
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      submitForm()
+      submitForm();
     });
-  }catch(error){
+  } catch (error) {
     console.log(error.message);
   }
- 
 };
 export default sendForm;
