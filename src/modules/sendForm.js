@@ -6,23 +6,22 @@ const sendForm = ({ formId, someElem = [] }) => {
     const img = document.createElement("img");
     const statusList = {
       load: {
-        message: " Загрузка...",
+        message: `<span style="color:white"></span>`,
         img: "./images/message/loading.gif",
       },
       error: {
-        message: "Ошибка...",
+        message: `<span style="color:white;padding-left: 10px">Ошибка...</span>`,
         img: "./images/message/Err.png",
       },
       success: {
-        message: "Спасибо! Наш менеджер свяжется с Вами.",
+        message:`<span style="color:white;padding-left: 10px">Спасибо! Наш менеджер свяжется с Вами</span>`,
         img: "./images/message/OK.png",
       },
     };
 
-    statusBlock.textContent = statusList[status].message;
+    statusBlock.innerHTML = statusList[status].message;
     img.src = statusList[status].img;
-    img.height = 50;
-
+    img.height = 30;
     statusBlock.append(img, statusBlock.firstChild);
   };
 
