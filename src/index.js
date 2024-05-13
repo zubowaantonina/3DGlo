@@ -4,9 +4,13 @@ import modal from "./modules/modal.js";
 import scroll from "./modules/scroll.js";
 import form from "./modules/form.js";
 import calculator from "./modules/calculator.js";
-timer("30 april 2024");
+import tabs from "./modules/tabs.js";
+
+timer("15 may 2024");
 menu();
 modal();
 scroll();
 form();
 calculator();
+tabs();
+
