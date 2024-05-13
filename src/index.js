@@ -11,6 +11,6 @@ menu();
 modal();
 scroll();
 form();
-calculator();
+calculator(100);
 tabs();
 
