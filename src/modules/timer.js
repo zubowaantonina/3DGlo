@@ -22,7 +22,7 @@ const timer = (deadline) => {
     hours = padZero(hours);
     return { timeRemaining, hours, minutes, seconds };
   };
-
+ 
   let interval;
   const updateClock = () => {
     let getTime = getTimeRemaining();
