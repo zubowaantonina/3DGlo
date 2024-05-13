@@ -1,7 +1,12 @@
 import timer from "./modules/timer.js";
 import menu from "./modules/menu.js";
 import modal from "./modules/modal.js";
-timer("15 may 2024");
+import scroll from "./modules/scroll.js";
+import form from "./modules/form.js";
+import calculator from "./modules/calculator.js";
+timer("30 april 2024");
 menu();
 modal();
 scroll();
+form();
+calculator();
