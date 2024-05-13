@@ -1,8 +1,6 @@
-const form = () => {
+const validateForm = () => {
     const textInputs = document.querySelectorAll('input[Placeholder="Ваше имя"]');
-    const textArea = document.querySelector(
-        'input[Placeholder="Ваше сообщение"]'
-    );
+    const textArea = document.querySelector('input[Placeholder="Ваше сообщение"]');
     const emailInputs = document.querySelectorAll('input[Type="email"]');
     const telInputs = document.querySelectorAll('input[Type="tel"]');
 
@@ -12,7 +10,7 @@ const form = () => {
         });
     });
     textArea.addEventListener("input", (e) => {
-        e.target.value = e.target.value.replace(/[^а-яА-Я -]/g, "");
+        e.target.value = e.target.value.replace(/[^а-яА-Я0-9 .,! -]/g, "");
     });
     emailInputs.forEach((item) => {
         item.addEventListener("input", (e) => {
@@ -21,8 +19,8 @@ const form = () => {
     });
     telInputs.forEach((item) => {
         item.addEventListener("input", (e) => {
-            e.target.value = e.target.value.replace(/[^0-9()-]/g, "");
+            e.target.value = e.target.value.replace(/[^0-9()+]/g, "");
         });
     });
 };
-export default form;
+export default validateForm;
