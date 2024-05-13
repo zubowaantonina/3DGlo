@@ -1,3 +1,4 @@
+import { animate } from './helpers';
 const calculator = (price = 100) => {
   const calcBlock = document.querySelector(".calc-block");
   const calcType = document.querySelector(".calc-type");
@@ -34,22 +35,18 @@ const calculator = (price = 100) => {
     } else {
       totalValue = 0;
     }
-   let time = 100;
-    let step = 1;
-
-    const numberAnimation = (num, elem) => {
-      let n = 0;
-      const t = Math.round(time / (num / step));
-      const interval = setInterval(() => {
-        n = n + step;
-        if (n == num) {
-          clearInterval(interval);
-        }
-        total.textContent = n;
-      }, t);
-    };
     if (totalValue !== 0) {
-      numberAnimation(totalValue, total);
+      animate({
+        duration: 1000,
+        timing(timeFraction) {
+            return timeFraction;
+        },
+        draw(progress) {
+            
+            total.textContent = +total.textContent + Math.round(progress * (totalValue - total.textContent));
+        }
+    });
+  
     }
   };
 
